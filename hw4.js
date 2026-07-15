@@ -297,11 +297,14 @@ function validatepwd() {
 
     //display error messages if any
     const errorContainer = document.getElementById("pwd-error");
-    if(errorMessage.length > 0) {
+
+    if (errorMessage.length > 0) {
         errorContainer.innerHTML = errorMessage.join("<br>");
-    }else{
-        errorContainer.innerHTML = "";
-    }
+        return false;
+        } else {
+            errorContainer.innerHTML = "";
+            return true;
+        }
 }
 
 //confirm password validation code
@@ -331,7 +334,7 @@ function validateconfirmpwd() {
 function reviewInput() {
 
    validatepwd();
-   confirmpwd();
+   validateconfirmpwd();
 
    const pwdErrors = document.getElementById("pwd-error").innerHTML;
    const confPwdErrors = document.getElementById("confirmpwd-error").innerHTML;
@@ -340,7 +343,14 @@ function reviewInput() {
     return;
    }
    const formcontent = document.getElementById("signup");
-   let formoutput = "<table class='output'><tr><th colspan = '3'>Please Review Patient's Information:</th></tr>";
+   let formoutput = 
+    "<table class='output'>" +
+    "<tr>" +
+    "<th colspan='2'>Please Review Patient's Information</th>" +
+    "<th style='text-align:right;'>" +
+    "<button type='button' class='close-review-btn' onclick='removeReview()'>✖</button>" +
+    "</th>" +
+    "</tr>";
    
    for (let i =0; i < formcontent.elements.length; i++) {
         let formEl = formcontent.elements[i];
@@ -421,6 +431,7 @@ function reviewInput() {
 //remove user input
 function removeReview() {
     document.getElementById("showInput").innerHTML = "";
+    document.getElementById("showInput").style.display = "none";
 }
 
 //shows alert box when necessary code

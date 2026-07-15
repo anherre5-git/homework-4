@@ -309,3 +309,16 @@ td.output {
     height: 25%;
     border: 1px solid black;
 }
+
+.close-review-btn {
+    background: transparent;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #555;
+    font-weight: bold;
+}
+
+.close-review-btn:hover {
+    color: red;
+}
